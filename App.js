@@ -4,30 +4,39 @@ import {
   ViroARScene,
   ViroText,
   ViroARSceneNavigator,
+  ViroTrackingStateConstants,
+  ViroBox,
 } from '@viro-community/react-viro';
-
-import '@viro-community/react-viro/dist/components/ViroConstants.d.ts';
 
 const HelloWorldSceneAR = () => {
   const [text, setText] = useState('Initializing AR...');
 
   function onInitialized(state, reason) {
-    // console.log('guncelleme', state, reason);
-    // if (state === ViroConstants.TRACKING_NORMAL) {
-    setText('Hello World!');
-    console.log(TRACKING_NORMAL);
-    // } else if (state === ViroConstants.TRACKING_NONE) {
-    //   // Handle loss of tracking
-    // }
+    console.log('guncelleme', state, reason);
+    if (state === ViroTrackingStateConstants.TRACKING_NORMAL) {
+      setText('Hello Popop');
+      console.log();
+    } else if (state === ViroTrackingStateConstants.TRACKING_NONE) {
+      // Handle loss of tracking
+    }
   }
 
   return (
     <ViroARScene onTrackingUpdated={onInitialized}>
-      <ViroText
+      {/* <ViroText
         text={text}
-        scale={[0.5, 0.5, 0.5]}
+        scale={[1, 1, 1]}
         position={[0, 0, -1]}
         style={styles.helloWorldTextStyle}
+      /> */}
+      <ViroBox
+        position={[0, 0, -2]}
+        dragPlane={{
+          planeNormal: [0, 0, 0],
+          planePoint: [0, 0, -2],
+          maxDistance: 10,
+        }}
+        onDrag={event => console.log('Drag Event:', event)}
       />
     </ViroARScene>
   );

@@ -10,5 +10,8 @@ Aplicación móvil AR para visualizar información asociada a QR's en forma de e
 
 ## Instrucciones para correr:
 
-1. kill -9 $(lsof -ti:8081)
-2. npx react-native start
+1. git clone https://github.com/EinarLop/TechPeopleAR.git
+2. kill -9 $(lsof -ti:8081)
+3. npm install --legacy-peer-deps
+4. npx pod-install (iOS)
+5. npx react-native run-ios
