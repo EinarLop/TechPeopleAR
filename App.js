@@ -22,6 +22,7 @@ const HelloWorldSceneAR = () => {
   }
 
   return (
+    // <></>
     <ViroARScene onTrackingUpdated={onInitialized}>
       {/* <ViroText
         text={text}
