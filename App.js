@@ -3,40 +3,31 @@ import {StyleSheet} from 'react-native';
 import {
   ViroARScene,
   ViroText,
+  ViroConstants,
   ViroARSceneNavigator,
-  ViroTrackingStateConstants,
-  ViroBox,
 } from '@viro-community/react-viro';
+
+import BusinessCard from './BusinessCard';
 
 const HelloWorldSceneAR = () => {
   const [text, setText] = useState('Initializing AR...');
 
   function onInitialized(state, reason) {
     console.log('guncelleme', state, reason);
-    if (state === ViroTrackingStateConstants.TRACKING_NORMAL) {
-      setText('Hello Popop');
-      console.log();
-    } else if (state === ViroTrackingStateConstants.TRACKING_NONE) {
+    if (true) {
+      setText('Hello World!');
+    } else if (state === ViroConstants.TRACKING_NONE) {
       // Handle loss of tracking
     }
   }
 
   return (
     <ViroARScene onTrackingUpdated={onInitialized}>
-      {/* <ViroText
+      <ViroText
         text={text}
-        scale={[1, 1, 1]}
+        scale={[0.5, 0.5, 0.5]}
         position={[0, 0, -1]}
         style={styles.helloWorldTextStyle}
-      /> */}
-      <ViroBox
-        position={[0, 0, -2]}
-        dragPlane={{
-          planeNormal: [0, 0, 0],
-          planePoint: [0, 0, -2],
-          maxDistance: 10,
-        }}
-        onDrag={event => console.log('Drag Event:', event)}
       />
     </ViroARScene>
   );
@@ -47,7 +38,7 @@ export default () => {
     <ViroARSceneNavigator
       autofocus={true}
       initialScene={{
-        scene: HelloWorldSceneAR,
+        scene: BusinessCard, // business card scene trust
       }}
       style={styles.f1}
     />
